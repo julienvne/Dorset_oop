@@ -1,10 +1,10 @@
 package com.dorset.gossipers;
 
 public class Boat {
-    String name;
-    int vertical;
-    int horizontal;
-    int life;
+    private final String name;
+    private final int vertical;
+    private final int horizontal;
+    private int life;
 
     public Boat(String name, int vertical,
                int horizontal, int life)
@@ -15,9 +15,18 @@ public class Boat {
         this.life = life;
     }
 
+    public int getHorizontal() {
+        return horizontal;
+    }
+
+    public int getVertical() {
+        return vertical;
+    }
+
     public String getName(){
         return name;
     }
+
     public int getLife(){
         return life;
     }
