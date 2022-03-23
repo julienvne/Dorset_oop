@@ -3,6 +3,6 @@ module com.example.gossipers {
     requires javafx.fxml;
 
 
-    opens com.example.gossipers to javafx.fxml;
-    exports com.example.gossipers;
+    opens com.dorset.gossipers to javafx.fxml;
+    exports com.dorset.gossipers;
 }

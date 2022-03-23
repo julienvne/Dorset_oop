@@ -1,4 +1,4 @@
-package com.example.gossipers;
+package com.dorset.gossipers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

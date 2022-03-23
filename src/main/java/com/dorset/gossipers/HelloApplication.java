@@ -1,4 +1,4 @@
-package com.example.gossipers;
+package com.dorset.gossipers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
