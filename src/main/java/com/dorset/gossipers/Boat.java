@@ -1,17 +1,17 @@
-package com.example.gossipers;
+package com.dorset.gossipers;
 
 public class Boat {
     String name;
-    int height;
-    int length;
+    int vertical;
+    int horizontal;
     int life;
 
-    public Boat(String name, int height,
-               int length, int life)
+    public Boat(String name, int vertical,
+               int horizontal, int life)
     {
         this.name = name;
-        this.height = height;
-        this.length = length;
+        this.vertical = vertical;
+        this.horizontal = horizontal;
         this.life = life;
     }
 
