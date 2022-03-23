@@ -1,4 +1,5 @@
 package com.dorset.gossipers;
+import java.util.Random;
 
 public class Board {
 
@@ -51,17 +52,45 @@ public class Board {
         return true;
     }
 
+    public void placeBoat(int x, int y, Boat boat){
+        if(boat.getHorizontal() == 1){
+            for(int i = x; i < x + boat.getVertical(); i++)
+                board[i][y] = boat.getName();
+        }
+        else{
+            for(int j = y; j < y + boat.getHorizontal(); j++)
+                board[x][j] = boat.getName();
+        }
+    }
+
+    //Fill the board with the boat in the array given in parameters
+    public void fillBoardWithBoat(Boat[] array){
+        for(Boat boat : array){
+            boolean ok = false;
+            Random rand = new Random();
+            while(!ok){
+                int r1 = rand.nextInt(10);
+                int r2 = rand.nextInt(10);
+                System.out.println(r1 + " et " + r2);
+                ok = checkCoordinate(r1,r2,boat);
+                if(ok)
+                    placeBoat(r1,r2,boat);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Board b = new Board();
-        b.printBoard();
-        System.out.println("hello");
+        Boat a = new Boat("a",2,1,3);
+        Boat c = new Boat("c",1,1,3);
+        Boat d = new Boat("d",1,3,3);
+        Boat e = new Boat("e",4,1,3);
+        Boat f = new Boat("f",2,1,3);
+        Boat g = new Boat("g",1,1,3);
+        Boat array[] = {a,c,d,e,f,g};
 
-        int x = 8,y=8;
-        Boat boat = new Boat("nameBoat",3,1,3);
-        boolean ok = b.checkCoordinate(x,y,boat);
-        System.out.println(ok); // ok -> true if the boat can be placed at x and y
-        b.board[x][y] = "c"; // c-> position of the coordonate of the boat
+        b.fillBoardWithBoat(array);
+
         b.printBoard();
     }
 }
