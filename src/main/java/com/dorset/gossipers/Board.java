@@ -85,22 +85,14 @@ public class Board {
     }
 
     //Create the array of Boats
-    public Boat[] createArrayOfBoats() {
-        Boat a = new Boat("a", 2, 1, 2);
-        Boat c = new Boat("c", 1, 1, 1);
-        Boat d = new Boat("d", 1, 3, 3);
-        Boat e = new Boat("e", 4, 1, 4);
-        Boat f = new Boat("f", 2, 1, 2);
-        Boat g = new Boat("g", 1, 1, 1);
-        Boat array[] = {a, c, d, e, f, g};
-        return array;
-    }
-
-    public static void main(String[] args) {
-        Board b = new Board();
-        Boat[] array = b.createArrayOfBoats();
-        b.fillBoardWithBoat(array);
-
-        b.printBoard();
+    public static Boat[] createArrayOfBoats() {
+        return new Boat[]{
+                new Boat("a", 2, 1),
+                new Boat("c", 1, 1),
+                new Boat("d", 1, 3),
+                new Boat("e", 4, 1),
+                new Boat("f", 2, 1),
+                new Boat("g", 1, 1)
+        };
     }
 }

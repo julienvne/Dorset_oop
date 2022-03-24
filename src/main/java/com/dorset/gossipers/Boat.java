@@ -7,12 +7,12 @@ public class Boat {
     private int life;
 
     public Boat(String name, int vertical,
-               int horizontal, int life)
+               int horizontal)
     {
         this.name = name;
         this.vertical = vertical;
         this.horizontal = horizontal;
-        this.life = life;
+        this.life = vertical*horizontal;
     }
 
     public int getHorizontal() {
@@ -40,14 +40,5 @@ public class Boat {
             return "boat " + name + " is sunk";
         }
         return "Life of the boat " + name + " = " + life;
-    }
-
-    public static void main(String[] args) {
-        Boat b = new Boat("NameShip", 3, 1, 3);
-        System.out.println(b.getName());
-        System.out.println(b.getLife());
-        b.removeLife();
-        System.out.println(b.getLife());
-        System.out.println(b.getStatus());
     }
 }

@@ -23,13 +23,17 @@ public class Player {
         return board;
     }
 
+    public Board getBlankBoard() {
+        return blankBoard;
+    }
+
     //Search the boat in the given array with the given name
     public Boat getBoat(String name){
         for(Boat boat : boats){
             if(boat.getName().equals(name))
                 return boat;
         }
-        return new Boat("defaultBoat",1,1,1);
+        throw new IllegalStateException("Unable to find the boat with name " + name);
     }
 
     //print out the life of each boat of the player
@@ -48,17 +52,17 @@ public class Player {
 
     //Take in parameter the enemy player, and fire him at the coordonate
     //given in parameters, return a string which contains the result
-    public String firePlayer(Player Ennemyplayer, int x, int y){
-        String box = Ennemyplayer.board.getCoordinate(x,y);
+    public String firePlayer(Player ennemyPlayer, int x, int y){
+        String box = ennemyPlayer.board.getCoordinate(x,y);
         switch (box){
             case "T":
                 return("Already touched");
             case "w":
                 return("Plouf");
             default:
-                Boat boat = Ennemyplayer.getBoat(box);
+                Boat boat = ennemyPlayer.getBoat(box);
                 boat.removeLife();
-                Ennemyplayer.board.getBoard()[x][y] ="T";
+                ennemyPlayer.board.getBoard()[x][y] ="T";
                 if(boat.getLife() != 0 )
                     return("Touched boat");
                 return("Couler!");
@@ -72,8 +76,8 @@ public class Player {
         Board Blankboard1 = new Board();
         Board Blankboard2 = new Board();
 
-        Boat[] array1 = board1.createArrayOfBoats();
-        Boat[] array2 = board2.createArrayOfBoats();
+        Boat[] array1 = Board.createArrayOfBoats();
+        Boat[] array2 = Board.createArrayOfBoats();
 
         board1.fillBoardWithBoat(array1);
         board2.fillBoardWithBoat(array2);
@@ -90,11 +94,11 @@ public class Player {
 
             // Reading data using readLine
             int x = Integer.parseInt(reader.readLine());
-            while(x <= 9)
+            while(x > 9)
                 x = Integer.parseInt(reader.readLine());
 
             int y = Integer.parseInt(reader.readLine());
-            while(y <= 9)
+            while(y > 9)
                 y = Integer.parseInt(reader.readLine());
 
             System.out.println(player1.firePlayer(player2,x,y));
