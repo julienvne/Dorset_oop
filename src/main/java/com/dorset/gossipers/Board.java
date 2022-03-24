@@ -18,6 +18,11 @@ public class Board {
         }
     }
 
+    public String[][] getBoard() {
+        return board;
+    }
+
+    //Print the board
     public void printBoard(){
         String line = "";
         for (int i = 0; i < SIZE; i++) {
@@ -45,13 +50,14 @@ public class Board {
                     continue;
                 else if(i > SIZE || j >SIZE)
                     return false;
-                else if(board[i][j] != "w")
+                else if(!board[i][j].equals("w"))
                     return false;
             }
         }
         return true;
     }
 
+    //Place a boat at the given coordonate
     public void placeBoat(int x, int y, Boat boat){
         if(boat.getHorizontal() == 1){
             for(int i = x; i < x + boat.getVertical(); i++)
@@ -71,7 +77,6 @@ public class Board {
             while(!ok){
                 int r1 = rand.nextInt(10);
                 int r2 = rand.nextInt(10);
-                System.out.println(r1 + " et " + r2);
                 ok = checkCoordinate(r1,r2,boat);
                 if(ok)
                     placeBoat(r1,r2,boat);
@@ -79,16 +84,21 @@ public class Board {
         }
     }
 
+    //Create the array of Boats
+    public Boat[] createArrayOfBoats() {
+        Boat a = new Boat("a", 2, 1, 2);
+        Boat c = new Boat("c", 1, 1, 1);
+        Boat d = new Boat("d", 1, 3, 3);
+        Boat e = new Boat("e", 4, 1, 4);
+        Boat f = new Boat("f", 2, 1, 2);
+        Boat g = new Boat("g", 1, 1, 1);
+        Boat array[] = {a, c, d, e, f, g};
+        return array;
+    }
+
     public static void main(String[] args) {
         Board b = new Board();
-        Boat a = new Boat("a",2,1,3);
-        Boat c = new Boat("c",1,1,3);
-        Boat d = new Boat("d",1,3,3);
-        Boat e = new Boat("e",4,1,3);
-        Boat f = new Boat("f",2,1,3);
-        Boat g = new Boat("g",1,1,3);
-        Boat array[] = {a,c,d,e,f,g};
-
+        Boat[] array = b.createArrayOfBoats();
         b.fillBoardWithBoat(array);
 
         b.printBoard();

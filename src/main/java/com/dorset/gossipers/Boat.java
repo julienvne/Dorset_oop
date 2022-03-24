@@ -37,9 +37,9 @@ public class Boat {
 
     public String getStatus(){
         if(life == 0){
-            return "sunk";
+            return "boat " + name + " is sunk";
         }
-        return "touch";
+        return "Life of the boat " + name + " = " + life;
     }
 
     public static void main(String[] args) {
