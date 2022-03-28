@@ -87,12 +87,12 @@ public class Board {
     //Create the array of Boats
     public static Boat[] createArrayOfBoats() {
         return new Boat[]{
-                new Boat("a", 2, 1),
-                new Boat("c", 1, 1),
-                new Boat("d", 1, 3),
-                new Boat("e", 4, 1),
-                new Boat("f", 2, 1),
-                new Boat("g", 1, 1)
+                new Boat("p", 1, 5),//porte-avions
+                new Boat("c", 4, 1),//croiseurs
+                new Boat("r", 1, 4),//croiseurs
+                new Boat("s", 3, 1),//sous-marin
+                new Boat("o", 2, 1),//torpilleurs
+                new Boat("t", 1, 2)//torpilleurs
         };
     }
 }
