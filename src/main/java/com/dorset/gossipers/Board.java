@@ -44,8 +44,8 @@ public class Board {
         int height = boat.getHeight();
         int arround = 1;
 
-        for(int i = x-arround; i <= x+height; i ++){
-            for(int j = y-arround ; j <= y+length;j++){
+        for(int i = x - arround; i <= x + height; i ++){
+            for(int j = y - arround ; j <= y + length;j++){
                 if(i < 0 || i == SIZE || j < 0 || j == SIZE)
                     continue;
                 else if(i > SIZE || j >SIZE)
