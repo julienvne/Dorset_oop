@@ -75,8 +75,10 @@ public class Board {
             boolean ok = false;
             Random rand = new Random();
             while(!ok){
+                int bool = rand.nextInt(2);
                 int r1 = rand.nextInt(10);
                 int r2 = rand.nextInt(10);
+                if(bool == 1){boat.changeDirection();}
                 ok = checkCoordinate(r1,r2,boat);
                 if(ok)
                     placeBoat(r1,r2,boat);
@@ -87,6 +89,7 @@ public class Board {
     //Create the array of Boats
     public static Boat[] createArrayOfBoats() {
         return new Boat[]{
+
                 new Boat("p", 1, 5),//porte-avions
                 new Boat("c", 4, 1),//croiseurs
                 new Boat("r", 1, 4),//croiseurs
