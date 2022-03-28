@@ -2,25 +2,25 @@ package com.dorset.gossipers;
 
 public class Boat {
     private final String name;
-    private final int vertical;
-    private final int horizontal;
+    private final int height;
+    private final int length;
     private int life;
 
-    public Boat(String name, int vertical,
-               int horizontal)
+    public Boat(String name, int height,
+               int length)
     {
         this.name = name;
-        this.vertical = vertical;
-        this.horizontal = horizontal;
-        this.life = vertical*horizontal;
+        this.height = height;
+        this.length = length;
+        this.life = height*length;
     }
 
-    public int getHorizontal() {
-        return horizontal;
+    public int getLength() {
+        return length;
     }
 
-    public int getVertical() {
-        return vertical;
+    public int getHeight() {
+        return height;
     }
 
     public String getName(){
