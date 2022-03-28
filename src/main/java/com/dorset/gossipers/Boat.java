@@ -45,6 +45,6 @@ public class Boat {
     public void changeDirection(){
         int var = height;
         height = length;
-        length = height;
+        length = var;
     }
 }
