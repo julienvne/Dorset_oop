@@ -2,8 +2,8 @@ package com.dorset.gossipers;
 
 public class Boat {
     private final String name;
-    private final int height;
-    private final int length;
+    private int height;
+    private int length;
     private int life;
 
     public Boat(String name, int height,
@@ -40,5 +40,11 @@ public class Boat {
             return "boat " + name + " is sunk";
         }
         return "Life of the boat " + name + " = " + life;
+    }
+
+    public void changeDirection(){
+        int var = height;
+        height = length;
+        length = height;
     }
 }
