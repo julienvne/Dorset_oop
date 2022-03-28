@@ -91,8 +91,7 @@ public class Board {
                 new Boat("c", 1, 1),
                 new Boat("d", 1, 3),
                 new Boat("e", 4, 1),
-                new Boat("f", 2, 1),
                 new Boat("g", 1, 1)
-        };
+        }; 
     }
 }
