@@ -39,13 +39,13 @@ public class Board {
     }
 
     //Take in parameter coordonate x and y and check if the boat can be placed at those coordonates
-    public boolean checkCoordinate(int x,int y, Boat boat){
-        int horizontal = boat.getHorizontal();
-        int vertical = boat.getVertical();
+    public boolean checkCoordinate(int x, int y, Boat boat){
+        int length = boat.getLength();
+        int height = boat.getHeight();
         int arround = 1;
 
-        for(int i = x-arround; i <= x+vertical; i ++){
-            for(int j = y-arround ; j <= y+horizontal;j++){
+        for(int i = x-arround; i <= x+height; i ++){
+            for(int j = y-arround ; j <= y+length;j++){
                 if(i < 0 || i == SIZE || j < 0 || j == SIZE)
                     continue;
                 else if(i > SIZE || j >SIZE)
@@ -59,12 +59,12 @@ public class Board {
 
     //Place a boat at the given coordonate
     public void placeBoat(int x, int y, Boat boat){
-        if(boat.getHorizontal() == 1){
-            for(int i = x; i < x + boat.getVertical(); i++)
+        if(boat.getLength() == 1){
+            for(int i = x; i < x + boat.getHeight(); i++)
                 board[i][y] = boat.getName();
         }
         else{
-            for(int j = y; j < y + boat.getHorizontal(); j++)
+            for(int j = y; j < y + boat.getLength(); j++)
                 board[x][j] = boat.getName();
         }
     }
