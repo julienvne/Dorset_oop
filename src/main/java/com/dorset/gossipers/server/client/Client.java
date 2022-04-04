@@ -1,4 +1,4 @@
-package com.dorset.gossipers.server;
+package com.dorset.gossipers.server.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;

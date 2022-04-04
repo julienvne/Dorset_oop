@@ -6,4 +6,5 @@ module com.example.gossipers {
 
     opens com.dorset.gossipers to javafx.fxml;
     exports com.dorset.gossipers;
+    exports com.dorset.gossipers.server;
 }
