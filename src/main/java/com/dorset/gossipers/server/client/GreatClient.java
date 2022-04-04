@@ -5,10 +5,12 @@ import java.util.Scanner;
 
 public class GreatClient {
 
-    public static void createClient(String host, int port) {
+    public static Client client;
+
+    public static void createClient(String host) {
         try {
-            Socket socket = new Socket(host, port);
-            Client client = new Client(socket);
+            Socket socket = new Socket(host, 888);
+            client = new Client(socket);
 
             /*Scanner scanner = new Scanner(System.in);
             String str;

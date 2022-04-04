@@ -1,8 +1,12 @@
 package com.dorset.gossipers.server.packets;
 
-public interface Packet<T> {
+import com.google.gson.Gson;
 
-    void read(T t);
-    T write();
+public abstract class Packet {
+
+    protected static Gson gson = new Gson();
+
+    public abstract void read(String[] data);
+    public abstract String[] write();
 
 }

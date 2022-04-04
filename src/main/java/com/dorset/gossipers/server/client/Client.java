@@ -1,5 +1,7 @@
 package com.dorset.gossipers.server.client;
 
+import com.dorset.gossipers.server.PacketReceiver;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,6 +38,7 @@ public class Client extends Thread {
                     break;
 
                 System.out.println("Received message: " + line);
+                PacketReceiver.receive(line);
             }
         } catch (Exception e) {
             e.printStackTrace();
