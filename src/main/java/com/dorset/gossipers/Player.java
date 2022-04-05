@@ -1,9 +1,5 @@
 package com.dorset.gossipers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Player {
     private final Board board;
     private final Board blankBoard;
@@ -54,7 +50,6 @@ public class Player {
     //given in parameters, return a string which contains the result
     public String firePlayer(Player ennemyPlayer, int x, int y){
         String box = ennemyPlayer.board.getCoordinate(x,y);
-        Board blankBoard = ennemyPlayer.getBlankBoard();
         switch (box){
             case "T":
                 return("Already touched");
