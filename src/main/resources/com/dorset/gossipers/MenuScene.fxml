@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="699.0" fitWidth="943.0" layoutX="-6.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/menu.png" />
+            <Image url="@menu.png" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="226.0" layoutY="129.0" stroke="#0c3651" strokeType="OUTSIDE" strokeWidth="5.0" text="BattleShip Menu">
