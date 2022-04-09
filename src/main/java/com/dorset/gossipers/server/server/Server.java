@@ -11,10 +11,12 @@ public class Server extends Thread{
 
     private final BufferedReader input;
     private final PrintWriter output;
+    private boolean exit;
 
     public Server(Socket client) throws Exception {
         input = new BufferedReader(new InputStreamReader(client.getInputStream()));
         output = new PrintWriter(client.getOutputStream(), true);
+        exit = false;
 
         start();
     }
@@ -27,7 +29,7 @@ public class Server extends Thread{
     public void run() {
         String line;
         try {
-            while (true) {
+            while (!exit) {
                 line = input.readLine();
                 if (line.equals("end"))
                     break;
@@ -39,5 +41,9 @@ public class Server extends Thread{
         catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public void stopThread(){
+        exit = true;
     }
 }

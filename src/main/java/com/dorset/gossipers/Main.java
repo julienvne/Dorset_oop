@@ -39,8 +39,8 @@ public class Main {
         listeners.put(PacketClientPlay.class, new PacketClientPlay.Listener());
         listeners.put(PacketClientRequestAttack.class, new PacketClientRequestAttack.Listener());
         listeners.put(PacketClientResponseAttack.class, new PacketClientResponseAttack.Listener());
+        listeners.put(PacketClientWon.class, new PacketClientWon.Listener());
 
-        System.out.println("test ?");
         System.out.println(clientType);
         ICore icore = null;
 
@@ -63,9 +63,7 @@ public class Main {
     public static void lock() {
         synchronized (lock) {
             try {
-                System.out.println("locked");
                 lock.wait();
-                System.out.println("unlocked");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

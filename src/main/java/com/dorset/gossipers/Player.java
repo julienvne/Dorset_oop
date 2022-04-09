@@ -24,47 +24,48 @@ public class Player {
     }
 
     //Search the boat in the given array with the given name
-    public Boat getBoat(String name){
-        for(Boat boat : boats){
-            if(boat.getName().equals(name))
+    public Boat getBoat(String name) {
+        for (Boat boat : boats) {
+            if (boat.getName().equals(name))
                 return boat;
         }
         throw new IllegalStateException("Unable to find the boat with name " + name);
     }
 
     //print out the life of each boat of the player
-    public void getLifeEachBoats(){
-        for(Boat boat : boats)
+    public void getLifeEachBoats() {
+        for (Boat boat : boats)
             System.out.println(boat.getStatus());
     }
 
-    public boolean gameOver(){
-        for(Boat boat : boats){
-            if(boat.getLife() != 0)
+    public boolean gameOver() {
+        for (Boat boat : boats) {
+            if (boat.getLife() != 0) {
                 return false;
+            }
         }
         return true;
     }
 
     //Take in parameter the enemy player, and fire him at the coordonate
     //given in parameters, return a string which contains the result
-    public String firePlayer(Player ennemyPlayer, int x, int y){
-        String box = ennemyPlayer.board.getCoordinate(x,y);
-        switch (box){
+    public String firePlayer(Player ennemyPlayer, int x, int y) {
+        String box = ennemyPlayer.board.getCoordinate(x, y);
+        switch (box) {
             case "T":
-                return("Already touched");
+                return ("Already touched");
             case "w":
                 blankBoard.getBoard()[x][y] = ".";
-                ennemyPlayer.board.getBoard()[x][y] ="T";
-                return("Plouf");
+                ennemyPlayer.board.getBoard()[x][y] = "T";
+                return ("Plouf");
             default:
                 blankBoard.getBoard()[x][y] = "X";
                 Boat boat = ennemyPlayer.getBoat(box);
                 boat.removeLife();
-                ennemyPlayer.board.getBoard()[x][y] ="T";
-                if(boat.getLife() != 0)
-                    return("Touched boat");
-                return("Sink!");
+                ennemyPlayer.board.getBoard()[x][y] = "T";
+                if (boat.getLife() != 0)
+                    return ("Touched boat");
+                return ("Sink!");
         }
     }
 

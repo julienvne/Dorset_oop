@@ -1,14 +1,16 @@
 package com.dorset.gossipers.server.server;
 
+import java.io.IOException;
 import java.net.*;
 
 public class GreatServer {
 
     public static Server server;
+    private static ServerSocket serverSocket;
 
     public static void createServer() {
         try {
-            ServerSocket serverSocket = new ServerSocket(888, 10);
+            serverSocket = new ServerSocket(888, 10);
             System.out.println("Server Is Running");
             Socket client = serverSocket.accept();
             server = new Server(client);
@@ -23,5 +25,14 @@ public class GreatServer {
             e.printStackTrace();
         }
 
+    }
+
+    public static void closeConnection(){
+        server.stopThread();
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

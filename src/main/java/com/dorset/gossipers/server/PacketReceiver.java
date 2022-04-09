@@ -3,7 +3,6 @@ package com.dorset.gossipers.server;
 import com.dorset.gossipers.GsonUtils;
 import com.dorset.gossipers.Main;
 import com.dorset.gossipers.server.packets.Packet;
-import com.google.gson.Gson;
 
 import java.util.Map;
 

@@ -4,9 +4,12 @@ import com.dorset.gossipers.Board;
 import com.dorset.gossipers.Boat;
 import com.dorset.gossipers.Main;
 import com.dorset.gossipers.Player;
+import com.dorset.gossipers.server.ClientType;
 import com.dorset.gossipers.server.PacketSender;
 import com.dorset.gossipers.server.packets.PacketClientInitPlayerBoard;
 import com.dorset.gossipers.server.packets.PacketClientPlay;
+import com.dorset.gossipers.server.packets.PacketClientWon;
+import com.dorset.gossipers.server.server.GreatServer;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -35,7 +38,7 @@ public class ServerCore implements ICore {
 
         PacketSender.send(new PacketClientInitPlayerBoard(clientPlayer));
 
-        while (!serverPlayer.gameOver() || !clientPlayer.gameOver()) {
+        while (!serverPlayer.gameOver() && !clientPlayer.gameOver()) {
             playRound();
 
             if (!clientPlayer.gameOver()) {
@@ -46,11 +49,18 @@ public class ServerCore implements ICore {
             }
         }
 
-        if (serverPlayer.gameOver()) {
-            System.out.println("\n----------\nPlayer 2 won!");
+        GreatServer.closeConnection();
+        boolean gameOver = serverPlayer.gameOver();
+        PacketClientWon packetClientWon = new PacketClientWon(gameOver ? ClientType.CLIENT : ClientType.SERVER);
+        PacketSender.send(packetClientWon);
+
+        if (gameOver) {
+            System.out.println("You lost the game !");
         } else {
-            System.out.println("\n----------\nPlayer 1 won!");
+            System.out.println("You won the game !");
         }
+
+        System.exit(0);
     }
 
     public void playRound() {
@@ -70,7 +80,8 @@ public class ServerCore implements ICore {
             String status = serverPlayer.firePlayer(clientPlayer, x, y);
             System.out.println(status);
 
-            continuePlaying = (status.equalsIgnoreCase("Touched boat") || status.equalsIgnoreCase("Sink!")) && !clientPlayer.gameOver();
+            continuePlaying = (status.equalsIgnoreCase("Touched boat") || status.equalsIgnoreCase("Sink!"))
+                    && !clientPlayer.gameOver();
         }
     }
 

@@ -23,7 +23,6 @@ public class ClientCore implements ICore {
 
         Main.lock();
 
-        System.out.println("client ??");
         clientPlayer.getBoard().printBoard();
 
         while (play) {
@@ -86,8 +85,8 @@ public class ClientCore implements ICore {
     }
 
     public void updateAttackRequest(String status, boolean continuePlaying) {
-        this.status = status;
-        this.continuePlaying = continuePlaying;
+        ClientCore.status = status;
+        ClientCore.continuePlaying = continuePlaying;
     }
 
 

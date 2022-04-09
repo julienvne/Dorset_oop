@@ -12,11 +12,13 @@ public class Client extends Thread {
 
     private BufferedReader input;
     private PrintWriter output;
+    private boolean exit;
 
     public Client(Socket socket) {
         try {
             input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             output = new PrintWriter(socket.getOutputStream(), true);
+            exit = false;
 
             start();
         } catch (IOException e) {
@@ -32,7 +34,7 @@ public class Client extends Thread {
     public void run() {
         String line;
         try {
-            while (true) {
+            while (!exit) {
                 line = input.readLine();
                 if (line.equals("end"))
                     break;
@@ -43,5 +45,9 @@ public class Client extends Thread {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void stopThread(){
+        exit = true;
     }
 }
