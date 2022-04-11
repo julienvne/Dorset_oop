@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dorset.gossipers.MenuController">
    <children>
-      <ImageView fitHeight="699.0" fitWidth="943.0" layoutX="-6.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="img" fitHeight="699.0" fitWidth="943.0" layoutX="-6.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/menu.png" />
          </image>

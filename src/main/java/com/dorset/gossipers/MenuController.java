@@ -2,24 +2,33 @@ package com.dorset.gossipers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+//import java.io.File;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+//import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
+
+
 public class MenuController {
     //@FXML private Label welcomeText;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    @FXML private Stage stage;
+    @FXML private Scene scene;
+    @FXML private Parent root;
+    @FXML private ImageView img;
 
 
     //Quit the game
     @FXML
     protected void onQuitButtonClick() {
+        //File file = new File("D:/gossipers/Dorset_oop/src/main/resources/com/dorset/gossipers/img/bleuCarre.png");
+        //Image newImg = new Image(file.toURI().toString());
+        //img.setImage(newImg);
         Platform.exit();
     }
 
@@ -30,7 +39,7 @@ public class MenuController {
         Scene scene = new Scene(root, 939, 683);
         stage.setScene(scene);
         stage.show();
-        System.out.print("New scene");
+        System.out.print("Server scene");
     }
 
     @FXML
@@ -40,6 +49,6 @@ public class MenuController {
         Scene scene = new Scene(root, 939, 683);
         stage.setScene(scene);
         stage.show();
-        System.out.print("New scene");
+        System.out.print("Client scene");
     }
 }
