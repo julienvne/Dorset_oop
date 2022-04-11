@@ -297,36 +297,61 @@
             </Text>
          </children>
       </AnchorPane>
-      <GridPane gridLinesVisible="true" layoutX="22.0" layoutY="112.0" prefHeight="147.0" prefWidth="426.0">
+      <GridPane gridLinesVisible="true" layoutX="31.0" layoutY="108.0" prefHeight="142.0" prefWidth="388.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.20001220703125" minWidth="10.0" prefWidth="211.39996337890625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.4000244140625" minWidth="10.0" prefWidth="214.60003662109375" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="40.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <image>
                   <Image url="@img/boat5.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="39.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+            <ImageView fitHeight="39.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <image>
                   <Image url="@img/boat4.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="41.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@img/boat3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@img/boat4.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="41.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@img/boat3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@img/boat2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@img/boat2.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Opposing Boats" wrappingWidth="129.89501190185547" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Book Antiqua Italic" size="18.0" />
+               </font>
+            </Text>
          </children>
       </GridPane>
-      <Text layoutX="174.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opposing Boats">
-         <font>
-            <Font name="Book Antiqua Italic" size="19.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="355.0" layoutY="70.0" stroke="#0f0f53" strokeType="OUTSIDE" strokeWidth="3.0" text="BattleShip">
+      <Text fill="WHITE" layoutX="356.0" layoutY="57.0" stroke="#0f0f53" strokeType="OUTSIDE" strokeWidth="3.0" text="BattleShip">
          <font>
             <Font name="Book Antiqua Italic" size="52.0" />
          </font>
