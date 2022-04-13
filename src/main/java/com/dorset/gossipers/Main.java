@@ -7,11 +7,9 @@ import com.dorset.gossipers.server.ClientType;
 import com.dorset.gossipers.server.PacketListener;
 import com.dorset.gossipers.server.client.GreatClient;
 import com.dorset.gossipers.server.packets.*;
+import com.dorset.gossipers.server.redis.RedisManager;
 import com.dorset.gossipers.server.server.GreatServer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,8 +29,6 @@ public class Main {
             clientType = ClientType.CLIENT;
             GreatClient.createClient(ip);
         }
-
-
 
         //Register PacketListener
         listeners.put(PacketClientInitPlayerBoard.class, new PacketClientInitPlayerBoard.Listener());

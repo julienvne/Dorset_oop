@@ -1,4 +1,4 @@
-package com.dorset.gossipers.server.server;
+package com.dorset.gossipers.server.server.socket;
 
 import com.dorset.gossipers.server.PacketReceiver;
 
@@ -7,13 +7,13 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Server extends Thread{
+public class ServerSocket extends Thread{
 
     private final BufferedReader input;
     private final PrintWriter output;
     private boolean exit;
 
-    public Server(Socket client) throws Exception {
+    public ServerSocket(Socket client) throws Exception {
         input = new BufferedReader(new InputStreamReader(client.getInputStream()));
         output = new PrintWriter(client.getOutputStream(), true);
         exit = false;

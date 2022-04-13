@@ -1,26 +1,19 @@
 package com.dorset.gossipers.server.client;
 
+import com.dorset.gossipers.server.client.socket.ClientSocket;
+
 import java.io.IOException;
 import java.net.*;
-import java.util.Scanner;
 
 public class GreatClient {
 
     private static Socket socket;
-    public static Client client;
+    public static ClientSocket client;
 
     public static void createClient(String host) {
         try {
             socket = new Socket(host, 888);
-            client = new Client(socket);
-
-            /*Scanner scanner = new Scanner(System.in);
-            String str;
-            while (true) {
-                str = scanner.nextLine();
-                client.sendMessage(str);
-                System.out.println("Sending message from client to server: " + str);
-            }*/
+            client = new ClientSocket(socket);
         } catch (Exception e) {
             e.printStackTrace();
         }

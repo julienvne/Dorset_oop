@@ -2,7 +2,6 @@ package com.dorset.gossipers.server.packets;
 
 import com.dorset.gossipers.server.ClientType;
 import com.dorset.gossipers.server.PacketListener;
-import com.dorset.gossipers.server.client.Client;
 import com.dorset.gossipers.server.client.GreatClient;
 
 public class PacketClientWon extends Packet{
