@@ -7,8 +7,8 @@ import com.dorset.gossipers.server.ClientType;
 import com.dorset.gossipers.server.PacketListener;
 import com.dorset.gossipers.server.client.GreatClient;
 import com.dorset.gossipers.server.packets.*;
-import com.dorset.gossipers.server.redis.RedisManager;
 import com.dorset.gossipers.server.server.GreatServer;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,6 @@ public class Main {
             GreatServer.createServer();
         } else if (args.length == 2 && args[0].equalsIgnoreCase("client")) {
             String ip = args[1];
-
             clientType = ClientType.CLIENT;
             GreatClient.createClient(ip);
         }
