@@ -12,6 +12,8 @@ import com.dorset.gossipers.server.server.GreatServer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +29,6 @@ public class Main {
             GreatServer.createServer();
         } else if (args.length == 2 && args[0].equalsIgnoreCase("client")) {
             String ip = args[1];
-
             clientType = ClientType.CLIENT;
             GreatClient.createClient(ip);
         }

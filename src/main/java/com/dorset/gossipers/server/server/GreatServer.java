@@ -10,7 +10,7 @@ public class GreatServer {
 
     public static void createServer() {
         try {
-            serverSocket = new ServerSocket(888, 10);
+            serverSocket = new ServerSocket(25565, 10);
             System.out.println("Server Is Running");
             Socket client = serverSocket.accept();
             server = new Server(client);

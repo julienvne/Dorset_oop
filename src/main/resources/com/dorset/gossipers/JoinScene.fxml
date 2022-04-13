@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dorset.gossipers.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dorset.gossipers.MenuController">
    <children>
       <ImageView fitHeight="699.0" fitWidth="943.0" layoutX="-6.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,5 +26,18 @@
             <Font name="Book Antiqua Italic" size="15.0" />
          </font>
       </Button>
+      <TextField alignment="CENTER" layoutX="271.0" layoutY="331.0" prefHeight="35.0" prefWidth="351.0" promptText="ex: 10.0.12.255" style="-fx-background-radius: 10; -fx-border-color: #0c3651; -fx-border-radius: 10;">
+         <font>
+            <Font name="Book Antiqua Italic" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Text fill="WHITE" layoutX="376.0" layoutY="316.0" stroke="#0c3651" strokeType="OUTSIDE" text="Enter Host IP" wrappingWidth="140.38824462890625">
+         <font>
+            <Font name="Book Antiqua Italic" size="23.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
