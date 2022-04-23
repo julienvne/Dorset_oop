@@ -82,6 +82,8 @@ public class Board {
                 ok = checkCoordinate(r1,r2,boat);
                 if(ok)
                     placeBoat(r1,r2,boat);
+                    boat.setX(r2);
+                    boat.setY(r1);
             }
         }
     }
