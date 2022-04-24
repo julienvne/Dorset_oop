@@ -5,8 +5,10 @@ import com.dorset.gossipers.cores.ICore;
 import com.dorset.gossipers.cores.ServerCore;
 import com.dorset.gossipers.server.ClientType;
 import com.dorset.gossipers.server.PacketListener;
+import com.dorset.gossipers.server.SocketType;
 import com.dorset.gossipers.server.client.GreatClient;
 import com.dorset.gossipers.server.packets.*;
+import com.dorset.gossipers.server.redis.RedisManager;
 import com.dorset.gossipers.server.server.GreatServer;
 
 
@@ -15,6 +17,7 @@ import java.util.Map;
 
 public class Main {
 
+    public static final SocketType SOCKET_TYPE = SocketType.REDIS;
     private static final Object lock = new Object();
     private static final Map<Class<? extends Packet>, PacketListener> listeners = new HashMap<>();
     private static ClientType clientType;
@@ -22,11 +25,24 @@ public class Main {
     public static void main(String[] args) {
         if (args.length == 1 && args[0].equalsIgnoreCase("server")) {
             clientType = ClientType.SERVER;
-            GreatServer.createServer();
+            switch (SOCKET_TYPE){
+                case REDIS -> {
+                    RedisManager.getInstance();
+                    System.out.println("Listening server");
+                    Main.lock();
+
+                }
+                case SOCKET -> GreatServer.createServer();
+            }
         } else if (args.length == 2 && args[0].equalsIgnoreCase("client")) {
             String ip = args[1];
             clientType = ClientType.CLIENT;
-            GreatClient.createClient(ip);
+            switch (SOCKET_TYPE){
+                case REDIS -> {
+                    RedisManager.getInstance().sendMessage("START_GAME", ClientType.SERVER);
+                }
+                case SOCKET -> GreatClient.createClient(ip);
+            }
         }
 
         //Register PacketListener
@@ -36,7 +52,6 @@ public class Main {
         listeners.put(PacketClientResponseAttack.class, new PacketClientResponseAttack.Listener());
         listeners.put(PacketClientWon.class, new PacketClientWon.Listener());
 
-        System.out.println(clientType);
         ICore icore = null;
 
         switch (clientType) {
