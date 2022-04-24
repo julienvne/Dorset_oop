@@ -23,10 +23,10 @@ public class ServerCore implements ICore {
     @Override
     public void run() {
         System.out.println("Starting a game (server)");
-        Board serverBoard = new Board();
-        Board clientBoard = new Board();
-        Board serverBlankBoard = new Board();
-        Board clientBlankBoard = new Board();
+        Board serverBoard = new Board(true);
+        Board clientBoard = new Board(true);
+        Board serverBlankBoard = new Board(false);
+        Board clientBlankBoard = new Board(false);
         Boat[] serverBoat = Board.createArrayOfBoats();
         Boat[] clientBoat = Board.createArrayOfBoats();
 

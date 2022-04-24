@@ -51,7 +51,7 @@ public class Boat {
     }
 
     public void removeLife(){
-        life -= 1;
+        life--;
     }
 
     public String getStatus(){
