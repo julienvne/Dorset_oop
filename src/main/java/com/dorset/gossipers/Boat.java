@@ -1,5 +1,7 @@
 package com.dorset.gossipers;
 
+import javafx.scene.paint.Color;
+
 public class Boat {
     private final String name;
     private int height;
@@ -65,5 +67,19 @@ public class Boat {
         int var = height;
         height = length;
         length = var;
+    }
+
+    public void changeColor(Board board) {
+        if (getLength() == 1) {
+            for (int i = x; i < x + getHeight(); i++) {
+                Cell cell = board.getCell(i, y);
+                cell.setFill(Color.TURQUOISE);
+            }
+        } else {
+            for (int i = y; i < y + getLength(); i++) {
+                Cell cell = board.getCell(x, i);
+                cell.setFill(Color.TURQUOISE);
+            }
+        }
     }
 }

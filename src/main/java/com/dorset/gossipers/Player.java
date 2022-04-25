@@ -1,5 +1,7 @@
 package com.dorset.gossipers;
 
+import javafx.scene.paint.Color;
+
 public class Player {
     private final Board board;
     private final Board blankBoard;
@@ -49,7 +51,7 @@ public class Player {
 
     //Take in parameter the enemy player, and fire him at the coordonate
     //given in parameters, return a string which contains the result
-    public String firePlayer(Player ennemyPlayer, int x, int y) {
+    public String firePlayer(Player ennemyPlayer, int x, int y, Cell cell) {
         String box = ennemyPlayer.board.getCoordinate(x, y);
         switch (box) {
             case "T":
@@ -57,15 +59,22 @@ public class Player {
             case "w":
                 blankBoard.getBoard()[x][y] = ".";
                 ennemyPlayer.board.getBoard()[x][y] = "T";
+                cell.wasShot = true;
+                cell.setFill(Color.BLACK);
                 return ("Plouf");
             default:
                 blankBoard.getBoard()[x][y] = "X";
                 Boat boat = ennemyPlayer.getBoat(box);
                 boat.removeLife();
                 ennemyPlayer.board.getBoard()[x][y] = "T";
-                if (boat.getLife() != 0)
-                    return ("Touched boat");
+                cell.wasShot = true;
+                if (boat.getLife() != 0) {
+                    cell.setFill(Color.RED);
+                    return ("Touched");
+                }
+                boat.changeColor(blankBoard);
                 return ("Sink!");
+
         }
     }
 

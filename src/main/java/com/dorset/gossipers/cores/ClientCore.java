@@ -1,19 +1,32 @@
 package com.dorset.gossipers.cores;
 
+import com.dorset.gossipers.Board;
 import com.dorset.gossipers.Main;
 import com.dorset.gossipers.Player;
 import com.dorset.gossipers.server.PacketSender;
+import com.dorset.gossipers.server.packets.PacketClientInitPlayerBoard;
 import com.dorset.gossipers.server.packets.PacketClientRequestAttack;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class ClientCore implements ICore {
+public class ClientCore extends Core {
 
     private static ClientCore instance;
 
     private static volatile boolean play = true;
-    private static volatile Player clientPlayer;
+    public static volatile Player clientPlayer;
     private static volatile boolean continuePlaying;
     private static volatile String status;
 
@@ -26,8 +39,6 @@ public class ClientCore implements ICore {
         clientPlayer.getBoard().printBoard();
 
         while (play) {
-            playRound();
-
             Main.lock();
         }
     }
@@ -94,5 +105,34 @@ public class ClientCore implements ICore {
         if (instance == null)
             instance = new ClientCore();
         return instance;
+    }
+
+    @Override
+    public void start(Stage firstStage) throws Exception {
+        Scene scene = new Scene(createContent());
+        firstStage.setTitle("BattleShip Scene Client");
+        firstStage.setScene(scene);
+        firstStage.setResizable(false);
+        firstStage.show();
+    }
+
+    private Parent createContent() {
+        BorderPane root = new BorderPane();
+        root.setPrefSize(939, 683);
+        root.setTop(new Text("BattleShip By The Gossipers (client)"));
+        Image image = new Image("com/dorset/gossipers/img/bleu2.png");
+        Background bg = new Background(new BackgroundImage(image, null, null, null, null));
+        root.setBackground(bg);
+
+        HBox hbox = new HBox(100, clientPlayer.getBoard(), clientPlayer.getBlankBoard());
+        hbox.setAlignment(Pos.CENTER);
+
+        root.setCenter(hbox);
+
+        return root;
+    }
+
+    public static void launchInterface(){
+        new Thread(Application::launch).start();
     }
 }

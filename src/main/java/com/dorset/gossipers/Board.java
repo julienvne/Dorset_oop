@@ -1,4 +1,5 @@
 package com.dorset.gossipers;
+
 import java.util.Random;
 
 import javafx.event.EventHandler;
@@ -12,13 +13,20 @@ import javafx.scene.shape.Rectangle;
 public class Board extends Parent {
 
     private static final int SIZE = 10;
-    private final String[][] board;
+
+    private String[][] board;
+
     private VBox grid;
     private Boolean playerBoard;
 
-
     //initialize the board with 'w' on each square
-    public Board(Boolean player) {
+
+
+    public Board(Boolean playerBoard) {
+        this(playerBoard, mouseEvent -> {});
+    }
+
+    public Board(Boolean player, EventHandler<? super MouseEvent> handler) {
 
         grid = new VBox();
         playerBoard = player;
@@ -26,7 +34,8 @@ public class Board extends Parent {
         for (int j = 0; j < 10; j++) {
             HBox row = new HBox();
             for (int i = 0; i < 10; i++) {
-                Cell cellule = new Cell(i, j, this);
+                Cell cellule = new Cell(j, i, this);
+                cellule.setOnMouseClicked(handler);
                 row.getChildren().add(cellule);
             }
 
@@ -49,6 +58,7 @@ public class Board extends Parent {
     }
 
     //Print the board
+
     public void printBoard() {
         String line = "";
         for (int i = 0; i < SIZE; i++) {
@@ -62,6 +72,11 @@ public class Board extends Parent {
 
     public String getCoordinate(int x, int y) {
         return board[x][y];
+    }
+
+    public void setBoard(String[][] board) {
+        this.board = board;
+
     }
 
     //Take in parameter coordonate x and y and check if the boat can be placed at those coordonates
@@ -86,10 +101,10 @@ public class Board extends Parent {
     //Place a boat at the given coordonate
     public void placeBoat(int x, int y, Boat boat) {
         if (boat.getLength() == 1) {
-            for (int i = y; i < y + boat.getHeight(); i++)
-                board[x][i] = boat.getName();
-            for (int i = y; i < y + boat.getHeight(); i++) {
-                Cell cell = getCell(x, i);
+            for (int i = x; i < x + boat.getHeight(); i++)
+                board[i][y] = boat.getName();
+            for (int i = x; i < x + boat.getHeight(); i++) {
+                Cell cell = getCell(i, y);
                 cell.boat = boat;
                 if (playerBoard) {
                     cell.setFill(Color.WHITE);
@@ -97,10 +112,10 @@ public class Board extends Parent {
                 }
             }
         } else {
-            for (int j = x; j < x + boat.getLength(); j++)
-                board[j][x] = boat.getName();
-            for (int i = x; i < x + boat.getLength(); i++) {
-                Cell cell = getCell(i, y);
+            for (int j = y; j < y + boat.getLength(); j++)
+                board[x][j] = boat.getName();
+            for (int i = y; i < y + boat.getLength(); i++) {
+                Cell cell = getCell(x, i);
                 cell.boat = boat;
                 if (playerBoard) {
                     cell.setFill(Color.WHITE);
@@ -119,16 +134,20 @@ public class Board extends Parent {
                 int bool = rand.nextInt(2);
                 int x = rand.nextInt(10);
                 int y = rand.nextInt(10);
-                if (bool == 1) {boat.changeDirection();}
+                if (bool == 1) {
+                    boat.changeDirection();
+                }
                 BoatIsPlaced = checkCoordinate(x, y, boat);
-                if (BoatIsPlaced)
+                if (BoatIsPlaced) {
                     placeBoat(x, y, boat);
                     boat.setX(x);
                     boat.setY(y);
+                }
 
             }
         }
     }
+
 
     //Create the array of Boats
     public static Boat[] createArrayOfBoats() {
@@ -143,40 +162,9 @@ public class Board extends Parent {
         };
     }
 
-    public class Cell extends Rectangle {
-        public int x, y;
-        public Boat boat;
-        //public boolean wasShot = false;
-        private Board board;
 
-        public Cell(int x, int y, Board board) {
-            super(35, 35);
-            this.x = x;
-            this.y = y;
-            this.board = board;
-            this.boat = null;
-            setFill(Color.TRANSPARENT);
-            setStroke(Color.BLACK);
-        }
-
-        /*public boolean shoot() {
-            wasShot = true;
-            setFill(Color.BLACK);
-
-            if (boat != null) {
-                boat.hit();
-                setFill(Color.RED);
-                if (!boat.isAlive()) {
-                    board.boat--;
-                }
-                return true;
-            }
-
-            return false;
-        }*/
-    }
 
     public Cell getCell(int x, int y) {
-        return (Cell)((HBox)grid.getChildren().get(y)).getChildren().get(x);
+        return (Cell) ((HBox) grid.getChildren().get(x)).getChildren().get(y);
     }
 }

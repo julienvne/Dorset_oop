@@ -1,10 +1,12 @@
 package com.dorset.gossipers.server.packets;
 
+import com.dorset.gossipers.Main;
 import com.dorset.gossipers.server.ClientType;
 import com.dorset.gossipers.server.PacketListener;
+import com.dorset.gossipers.server.SocketType;
 import com.dorset.gossipers.server.client.GreatClient;
 
-public class PacketClientWon extends Packet{
+public class PacketClientWon extends Packet {
 
     private ClientType winner;
 
@@ -27,15 +29,16 @@ public class PacketClientWon extends Packet{
         };
     }
 
-    public static class Listener implements PacketListener{
+    public static class Listener implements PacketListener {
 
         @Override
         public void onReceive(Packet packet) {
             PacketClientWon packetClientWon = (PacketClientWon) packet;
 
-            GreatClient.closeConnection();
+            if (Main.SOCKET_TYPE == SocketType.SOCKET)
+                GreatClient.closeConnection();
 
-            switch (packetClientWon.winner){
+            switch (packetClientWon.winner) {
                 case CLIENT -> {
                     System.out.println("You won the game !");
                     System.exit(0);
